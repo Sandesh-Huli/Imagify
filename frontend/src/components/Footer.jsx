@@ -2,7 +2,7 @@ import React from "react";
 import { assets } from "../assets/assets";
 const Footer = () => {
     return (
-        <div className="mb-5 flex flex-row flex-wrap justify-between">
+        <div className=" flex flex-row flex-wrap justify-between pb-4">
             <div className="flex flex-row items-center justify-center gap-12">
                 <img src={assets.logo} alt="logo" />
                 <p className="text-gray-600">|</p>

@@ -1,7 +1,7 @@
-import React from "react";
 import { useState } from "react";
 import { assets } from "../assets/assets";
 import PromptBar from "../components/PromptBar";
+import { div } from "motion/react-client";
 export default function Result() {
     const [image, setImage] = useState(assets.sample_img_1);
     const [isImageLoaded, setIsImageLoaded] = useState(true);
@@ -10,7 +10,6 @@ export default function Result() {
         alert("you are downlaoading this image");
     }
     const handleGenerate = async (e) => {//yet to complete
-        alert("you are generating another image");
         setIsImageLoaded(false);
     }
     return (
@@ -19,7 +18,7 @@ export default function Result() {
                 <div className="relative">
                     <img src={image} alt="sample-img" className="max-w-sm rounded " />
                     {
-                    loading &&
+                        loading &&
                         <span className="absolute bottom-0 left-0 h-1.5 bg-blue-500 w-full transition-all duration-[10s] ease-in-out">Loading....</span>
                     }
                 </div>
@@ -28,9 +27,9 @@ export default function Result() {
                 <PromptBar />
             }
             {isImageLoaded &&
-                <div className="flex flex-col gap-4">
-                    <a href={image} onClick={handleDownload} download className="border border-black text-black px-8 py-3 rounded-full cursor-pointer">Download this image</a>
-                    <button onClick={handleGenerate} className="bg-zinc-900  px-10 py-3 rounded-full cursor-pointer text-white" >Generate another image</button>
+                <div className="flex flex-col gap-4 item">
+                    <a href={image} onClick={handleDownload} download className="border border-black text-black px-8 py-3 rounded-full cursor-pointer text-center">Download this image</a>
+                    <button onClick={handleGenerate} className="bg-zinc-900  px-10 py-3 rounded-full cursor-pointer text-white text-center" >Generate another image</button>
                 </div>
             }
         </div>

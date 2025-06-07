@@ -1,0 +1,38 @@
+# --- FRONTEND (React) ---
+frontend/node_modules/
+frontend/build/
+frontend/.env
+frontend/.DS_Store
+frontend/npm-debug.log*
+
+# --- BACKEND (Express + MongoDB) ---
+backend/node_modules/
+backend/.env
+backend/.DS_Store
+backend/npm-debug.log*
+
+# --- COMMON ---
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# IDE/editor settings
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+debug.log
+
+# Dependency lock files (optional to ignore yarn.lock if you're not using yarn)
+# If using both npm and yarn, you can choose one lock file and ignore the other
+# yarn.lock
+
+# Optional MongoDB dump data or dev db files
+dump/
+*.local.db
+
+# Test coverage (if using Jest or similar)
+coverage/
