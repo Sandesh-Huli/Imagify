@@ -25,7 +25,7 @@ export default function Profile({ user }) {
                 <div className="space-y-2 text-gray-700">
                     <p className="font-medium">{user.username}</p>
                     <p className="text-sm">{user.email}</p>
-                    <p className="mt-4 font-semibold">Credits Left: 20</p>
+                    <p className="mt-4 font-semibold">Credits Left: {user.creditBalance}</p>
                     <p className="mt-4 font-semibold">Images Generated</p>
                     <ul className="text-sm list-disc list-inside">
                         <li>Image 1</li>

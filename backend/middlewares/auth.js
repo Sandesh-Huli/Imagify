@@ -3,7 +3,7 @@ import passport from 'passport';
 
 import User from '../models/User.js';
 export const SignUpM = async (req, res, next) => {
-    const { username, email, password, creditBalance = 0 } = req.body;
+    const { username, email, password, creditBalance = 3 } = req.body;
 
     try {
         const existingUsername = await User.findOne({ username });

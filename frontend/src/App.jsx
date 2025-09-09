@@ -7,11 +7,12 @@ import Navbar from "./components/Navbar"
 import Login from "./components/Login"
 import Profile from "./components/Profile"
 import { AppContext } from "./context/AppContext"
-
+import { ToastContainer } from 'react-toastify';
+const backend_uri = import.meta.env.VITE_BACKEND_URI;
 function App() {
   const { showLogin, user, setUser, showProfile } = useContext(AppContext);
   useEffect(() => {
-    fetch('http://localhost:8080/user/checkAuth',{
+    fetch(`${backend_uri}/user/checkAuth`,{
       method: 'GET',
       credentials: 'include'
     }).then(res => res.json())
@@ -27,6 +28,7 @@ function App() {
   
   return (
     <div className="px-4 sm:px-10 md:px-14 lg:px-28 min-h-screen bg-gradient-to-b from-[#e9f2f1] to-[#cfb990]">
+      <ToastContainer  position="bottom-right"/>
       <Navbar user={user} />
       {showLogin && <Login setUser={setUser} />}
       {showProfile && <Profile user={user} />}

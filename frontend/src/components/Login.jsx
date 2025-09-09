@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../assets/assets";
 import { AppContext } from "../context/AppContext";
-
+import { toast } from "react-toastify";
+const backend_uri = import.meta.env.VITE_BACKEND_URI;
 
 const Login = ({ setUser }) => {
     const { authMode, setAuthMode, setShowLogin, user } = useContext(AppContext);
@@ -21,7 +22,7 @@ const Login = ({ setUser }) => {
     const handleRegister = async (e) => {
         e.preventDefault();
         const route = authMode === 'SignUp' ? 'SignUp' : 'login';
-        const response = await fetch(`http://localhost:8080/user/${route}`, {
+        const response = await fetch(`${backend_uri}/user/${route}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,6 +43,7 @@ const Login = ({ setUser }) => {
             alert(data.error || "Sign Up failed");
             if (authMode === 'SignUp' && data.name === 'UserExistsError') {
                 setAuthMode('login');
+                toast.error(data.message)
             }
         }
     }

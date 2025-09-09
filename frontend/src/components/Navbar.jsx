@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom"
 import { assets } from "../assets/assets"
 import { AppContext } from "../context/AppContext";
 import Profile from "./Profile";
+import dotenv from 'dotenv'
+const backend_uri = import.meta.env.VITE_BACKEND_URI;
 export default function Navbar() {
     const { user, setShowLogin, authMode, setAuthMode, showProfile, setShowProfile, setUser } = useContext(AppContext);
     const navigate = useNavigate();
@@ -14,7 +16,7 @@ export default function Navbar() {
     const handleLogoutClick = async () => {
         try{
             console.log('logout clicked');
-            const response = await fetch(`http://localhost:8080/user/logout`,{
+            const response = await fetch(`${backend_uri}/user/logout`,{
                 method: 'GET',
                 credentials: 'include'
             });
