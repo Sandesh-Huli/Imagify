@@ -22,8 +22,11 @@ const frontend_uri = process.env.FRONTEND_URI
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+const allowedOrigins = [ "http://localhost:5173", // local dev 
+process.env.FRONTEND_URI // production (Render) 
+];
 app.use(cors({
-    origin: frontend_uri,
+    origin: allowedOrigins,
     credentials: true,
 }));
 app.use(session({
