@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom"
 import { assets } from "../assets/assets"
 import { AppContext } from "../context/AppContext";
 import Profile from "./Profile";
-import dotenv from 'dotenv'
 const backend_uri = import.meta.env.VITE_BACKEND_URI;
 export default function Navbar() {
     const { user, setShowLogin, authMode, setAuthMode, showProfile, setShowProfile, setUser } = useContext(AppContext);
@@ -42,19 +41,19 @@ export default function Navbar() {
                 {
                     user ?
                         <div className="flex items-center gap-4 sm:gap-6">
-                            <button className="flex items-center gap-2 bg-blue-100 px-4 sm:px-6 py-2 sm:py-4 rounded-full hover:scale-105 transition-all duration-500" onClick={() => navigate('/buy')}>
+                            <button className="flex items-center gap-2 px-4 py-2 transition-all duration-500 bg-blue-100 rounded-full sm:px-6 sm:py-4 hover:scale-105" onClick={() => navigate('/buy')}>
                                 <img src={assets.credit_star} alt="profile" className="w-10 h-10 rounded-full" />
-                                <p className="text-sm sm:text-smfont-medium text-gray-900 max-sm:hidden">Credits left: {user.creditBalance} </p>
+                                <p className="text-sm text-gray-900 sm:text-smfont-medium max-sm:hidden">Credits left: {user.creditBalance} </p>
                             </button>
-                            <div className="relative group flex items-center gap-4 cursor-pointer">
+                            <div className="relative flex items-center gap-4 cursor-pointer group">
                                 <p>
                                     Hello {user.username}
                                 </p>
                                 <img src={assets.profile_icon} alt="profile" className="w-10 drop-shadow " />
-                                <div className="absolute top-0 right-0 hidden group-hover:block top-0 right-0 z-10 rounded pt-12">
-                                    <ul className="list-none m-0 p-2 bg-white rounded-md border text-md">
-                                        <li className="py-2 px-2 hover:bg-zinc-100 cursor-pointer" onClick={handleProfileClick}>Profile</li>
-                                        <li className="py-2 px-2 hover:bg-zinc-100 cursor-pointer" onClick={handleLogoutClick}>Logout</li>
+                                <div className="absolute top-0 right-0 z-10 hidden pt-12 rounded group-hover:block">
+                                    <ul className="p-2 m-0 list-none bg-white border rounded-md text-md">
+                                        <li className="px-2 py-2 cursor-pointer hover:bg-zinc-100" onClick={handleProfileClick}>Profile</li>
+                                        <li className="px-2 py-2 cursor-pointer hover:bg-zinc-100" onClick={handleLogoutClick}>Logout</li>
                                     </ul>
                                 </div>
                             </div>
@@ -62,12 +61,10 @@ export default function Navbar() {
                         :
                         <div className="flex items-center gap-4 sm:gap-6">
                             <p className="cursor-pointer " onClick={() => (navigate('/buy'))}>Pricing</p>
-                            <button className="bg-zinc-800 text-white px-6 py-2 rounded-md sm:px-10 " onClick={() => setShowLogin(true)}>
+                            <button className="px-6 py-2 text-white rounded-md bg-zinc-800 sm:px-10 " onClick={() => setShowLogin(true)}>
                                 {authMode == 'SignUp' ? 'Sign Up' : 'Login'}</button>
                         </div>
                 }
-
-
             </div>
         </div>
     )
