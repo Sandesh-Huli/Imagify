@@ -35,6 +35,7 @@ router.post('/generate', isAuthenticated, async (req, res) => {
         const result = `data:image/png;base64,${base64img}`;
 
         await User.findByIdAndUpdate(userId, { creditBalance: user.creditBalance - 1 }); //deduct the credit balance of the user   
+        user.creditBalance -= 1;
         res.json({
             success: true,
             message: "image generated",
