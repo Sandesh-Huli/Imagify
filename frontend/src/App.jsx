@@ -8,7 +8,7 @@ import Login from "./components/Login"
 import Profile from "./components/Profile"
 import { AppContext } from "./context/AppContext"
 import { ToastContainer } from 'react-toastify';
-const backend_uri = import.meta.env.VITE_BACKEND_URI;
+import { backend_uri } from "./config"
 function App() {
   const { showLogin, user, setUser, showProfile } = useContext(AppContext);
   useEffect(() => {
